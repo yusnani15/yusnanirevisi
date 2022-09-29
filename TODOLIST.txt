@@ -1,0 +1,8 @@
+[01-09-22]
+(*) Menampilkan Data Penduduk berdasarkan Nomor KK
+(*) Form Input mempunyai sebuah Fitur untuk menampilkan Anggota Keluarga dalam 1 KK
+
+(?) Membuat Sortir Pencarian untuk Laporan
+
+(?) Cek Status Perkawinan pada saat Input Data Penduduk
+(?) Menampilkan Jumlah yang mengajukan Surat
