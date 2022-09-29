@@ -155,7 +155,7 @@ if(@$_POST['cari']){
 		<a href="?page=kartu_keluarga&aksi=tambah"><input type="button" name="button" id="button2" value="+ Tambah" <?php echo "style='width:160px;background-color:".$btnbgcolor.";height:30px;color:".$btntextcolor.";'"; ?>/></a>
 	</td>
 	<td width="20"  bgcolor="white">
-		<form method="post"><input name="cari" type="text" placeholder="   Masukan Nomor KK/Nama Kepala Keluarga... " style="background-color:#FFFFFF; border:2px solid #000000;border-radius:10px;width:97%"/></form>
+		<form method="post"><input name="cari" type="text" placeholder="   Cari penduduk... " style="background-color:#FFFFFF; border:2px solid #000000;border-radius:10px;width:97%"/></form>
     </td>
   </tr>
 </table>
@@ -246,7 +246,7 @@ if (@$_POST['btnsimpan']){
 }elseif (@$_GET['aksi']=='batal_tambah'){
 		$_SESSION["SD_nomor_kk"]="";
 		$_SESSION["SD_nama_kepala_keluarga"]="";
-		echo "<script>document.location='?page=kartu_keluarga';</script>";
+		echo "<script>document.location='?page=kartu_keluarga&aksi=tambah';</script>";
 }elseif (@$_GET['aksi']=='batal_ubah'){
 		$_SESSION["SD_nomor_kk"]="";
 		$_SESSION["SD_nama_kepala_keluarga"]="";

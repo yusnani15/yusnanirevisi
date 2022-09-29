@@ -93,41 +93,20 @@ if (@$_SESSION["yusnani_nik"]==""){
 //tampil login
 	include("login.php");
 }elseif(@$_GET["page"]=="laporan" && @$_GET["kategori"]=="penduduk"){
-	//tampil laporan
+//tampil laporan
 	include("laporan_penduduk.php");
-}elseif(@$_GET["page"]=="laporan" && @$_GET["kategori"]=="lahir"){
+}elseif(@$_GET["page"]=="laporan" && @$_GET["kategori"]=="permohonan_surat"){
 //tampil laporan
 	include("laporan_permohonan_surat.php");
-}elseif(@$_GET["page"]=="laporan" && @$_GET["kategori"]=="surat_domisili"){
+}elseif(@$_GET["page"]=="laporan" && @$_GET["kategori"]=="realisasi_anggaran"){
 //tampil laporan
-	include("laporan_permohonan_surat_domisili.php");
-}elseif(@$_GET["page"]=="laporan" && @$_GET["kategori"]=="surat_pindah"){
+	include("lap_realisasi_anggaran.php");
+}elseif(@$_GET["page"]=="laporan" && @$_GET["kategori"]=="realisasi_bantuan"){
 //tampil laporan
-	include("laporan_permohonan_surat_pindah.php");
-}elseif(@$_GET["page"]=="laporan" && @$_GET["kategori"]=="surat_ahli_waris"){
+	include("lap_realisasi_bantuan.php");
+}elseif(@$_GET["page"]=="laporan" && @$_GET["kategori"]=="APBDes"){
 //tampil laporan
-	include("laporan_permohonan_surat_ahli_waris.php");
-}elseif(@$_GET["page"]=="laporan" && @$_GET["kategori"]=="surat_kematian"){
-//tampil laporan
-	include("laporan_permohonan_surat_kematian.php");
-}elseif(@$_GET["page"]=="laporan" && @$_GET["kategori"]=="surat_usaha"){
-//tampil laporan
-	include("laporan_permohonan_surat_usaha.php");
-}elseif(@$_GET["page"]=="laporan" && @$_GET["kategori"]=="surat_belum_menikah"){
-//tampil laporan
-	include("laporan_permohonan_surat_belum_menikah.php");
-}elseif(@$_GET["page"]=="laporan" && @$_GET["kategori"]=="surat_menikah"){
-//tampil laporan
-	include("laporan_permohonan_surat_menikah.php");
-}elseif(@$_GET["page"]=="laporan" && @$_GET["kategori"]=="surat_pengganti_ktp"){
-//tampil laporan
-	include("laporan_permohonan_surat_pengganti_ktp.php");
-}elseif(@$_GET["page"]=="laporan" && @$_GET["kategori"]=="surat_kurang_mampu"){
-//tampil laporan
-	include("laporan_permohonan_surat_kurang_mampu.php");
-}elseif(@$_GET["page"]=="laporan" && @$_GET["kategori"]=="surat_berkelakuan_baik"){
-//tampil laporan
-	include("laporan_permohonan_surat_berkelakuan_baik.php");
+	include("lap_APBDes.php");
 }else{
 //tampil index
 ?>
@@ -171,7 +150,7 @@ if (@$_SESSION["yusnani_nik"]==""){
 						<input type="button" name="button" id="button2" value="Laporan" <?php echo "style='width:".$menuwidth.";background-color:".$menubgcolor.";height:30px;color:".$menutextcolor.";border:".$menubordercolor.";'"; ?>>
 						<div class="dropdown-content">
 							<a href="?page=laporan&kategori=penduduk">Laporan Penduduk</a>
-							<a href="?page=permohonan_surat">Laporan Permohonan Surat </a>
+							<a href="?page=laporan&kategori=permohonan_surat">Laporan Permohonan Surat </a>
 						</div>
 					</div>
 					<div class="dropdown">
@@ -191,6 +170,10 @@ if (@$_SESSION["yusnani_nik"]==""){
 						<div class="dropdown-content">
 							<a href="?page=penduduk">Data Penduduk</a>
 							<a href="?page=kartu_keluarga">Data Kartu Keluarga</a>
+							<a href="?page=data_lahir">Data Lahir</a>
+							<a href="?page=data_meninggal">Data Meninggal</a>
+							<a href="?page=data_pendatang">Data Pendatang</a>
+							<a href="?page=data pindah">Data Pindah</a>
 						</div>
 					</div>
 					

@@ -179,8 +179,20 @@ if (@$_SESSION['yusnani_status']=="Sekretaris Desa" && $_SESSION['yusnani_nik']!
 	  </tr>
 	</table>
 	</a>
+
+	<a href="?page=data_lahir">
+	<table width="20%" border="0" align="left" cellpadding="3" cellspacing="3">
+	  <tr>
+		<td width="100%" height="70px" bgcolor="white" style="border: solid 2px #0171b9;background-color:#a2f4dc;" align="center">
+			<font size="5+">
+			<?php echo "Jumlah Penduduk: <B>$jlh_penduduk</B>"; ?>
+			</font>
+		</td>
+	  </tr>
+	</table>
+	</a>
 	
-	<a href="?page=permohonan_surat" target="blank">
+	<a href="?page=laporan&kategori=permohonan_surat" target="blank">
 	<table width="20%" border="0" align="left" cellpadding="3" cellspacing="3">
 	  <tr>
 		<td width="100%" height="70px" bgcolor="white" style="border: solid 2px #0171b9;background-color:#a2f4dc;" align="center">
@@ -431,7 +443,8 @@ if (@$_SESSION['yusnani_status']=="Penduduk" && $_SESSION['yusnani_nik']!=""){?>
 		</font>
 		</td>
 	  </tr>
-	</table>
+	</table><br>
+	<br>
 	
 
 	<!-- content-section-starts-here -->
@@ -440,7 +453,9 @@ if (@$_SESSION['yusnani_status']=="Penduduk" && $_SESSION['yusnani_nik']!=""){?>
 			<div class="col-md-8 content-left">
 			
 				<div align="time new roman">
-                                 
+                   
+		<h2 class="post">Visi dan Misi</h2>
+                      
 <style>
 table {
     border-collapse: collapse;

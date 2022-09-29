@@ -26,7 +26,6 @@ include("koneksi.php");
 	$query =mysqli_query($db,"select * from tb_penduduk order by nomor_kk asc");
 	$jlh_penduduk=mysqli_num_rows($query);
 	if ($jlh_penduduk>0){
-		$no=0;
 	?>
         <table width="797" align="center" cellpadding="3" bgcolor="white" cellspacing="0" style="border:4px solid #989; border-radius:0px;">
           <tr>
@@ -38,7 +37,6 @@ include("koneksi.php");
 					  <table width="780" border="1" align="center" cellpadding="0" cellspacing="0" bgcolor="white">
 					<?php if (mysqli_num_rows($query)>0){ ?>
 					  <tr>
-					  <th width="100">No</th>
 						<th width="150">Nomor KK</th>
 						<th width="200">NIK</th>
 						<th width="200">Nama Penduduk</th>
@@ -50,10 +48,8 @@ include("koneksi.php");
 						<th colspan="6"height="1" bgcolor="red"></td>
 					  </tr>-->
 					  <?php while ($data=mysqli_fetch_array($query)){
-						 $no=$no+1;
 					  ?>
 					  <tr>
-					  <td align="center"><?php echo $no; ?></td>
 						<td align="center"><?php echo $data['nomor_kk']; ?></td>
 						<td align="center"><?php echo $data['nik']; ?></td>
 						<td align="center"><?php echo $data['nama']; ?></td>
@@ -74,50 +70,15 @@ include("koneksi.php");
 					  </tr>
 					  </table></td>
 				  </tr>
-				</table>
-<?php } 
-			$query_kades =mysqli_query($db,"select * from tb_kepala_desa");
-			$nama_kades="-";
-			$jabatan_kades="Pangulu Nagori Perasmian.<br>Kecamatan Dolok Silau Kabupaten Simalungun";
-			if(mysqli_num_rows($query_kades)>0){
-				$data_kades=mysqli_fetch_array($query_kades);
-				$nama_kades=$data_kades["nama"];
-			} ?>
-
-			<table width="97%" border="0" align="center" cellpadding="0" cellspacing="0">
-				<tr>
-					<td width="360" rowspan="4"></td>
-					<td width="80" rowspan="2"></td>
-					<td width="100">Diperbuat di</td>
-					<td width="5">:</td>
-					<td width="auto">Perasmian</td>
-				</tr>
-				<tr>
-					<td>Pada Tanggal</td>
-					<td>:</td>
-					<td><?php echo date("d M Y"); ?></td>
-				</tr>
-				<tr>
-					<td>
-						<img src="img/stempel.png" style="position:absolute;">
-					</td>
-					<td colspan="3">
-						<hr>
-						<div style="width:200px;height:100px;border:solid red 0px;position:absolute;">
-						Pagulu Nagori Perasmian<br><br><br><br>
-						<?php echo $nama_kades; ?>
-						</div>
-					</td>
-				</tr>
-			</table>
-			<br><br><br><br><br><br><br>			
-		</td>
-	</tr>
-</table>				
+				</table>		
 			  </td>
 		  </tr>
         </table>
-            
+            <?php 
+	}else{
+		echo "<font size='15' color='#99FFCC'><center>Data Kosong</center></font>";	
+	?>
+	<?php } ?>
 	
 <script>
 window.print();

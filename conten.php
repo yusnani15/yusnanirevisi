@@ -14,33 +14,6 @@ elseif(@$_GET["page"]=="kartu_keluarga"){
 elseif(@$_GET["page"]=="penduduk"){
 	include("cek_login.php");
 	include("penduduk.php");
-
-}
-
-elseif(@$_GET["page"]=="lahir"){
-	include("cek_login.php");
-	include("lahir.php");
-}
-
-elseif(@$_GET["page"]=="permohonan_surat"){
-	include("cek_login.php");
-	include("permohonan_surat.php");
-}
-
-elseif(@$_GET["page"]=="meninggal"){
-	include("cek_login.php");
-	include("meninggal.php");
-
-}
-elseif(@$_GET["page"]=="pendatang"){
-	include("cek_login.php");
-	include("pendatang.php");
-
-}
-elseif(@$_GET["page"]=="pindah"){
-	include("cek_login.php");
-	include("pindah.php");
-
 }
 elseif(@$_GET["page"]=="surat_domisili"){
 	include("cek_login.php");

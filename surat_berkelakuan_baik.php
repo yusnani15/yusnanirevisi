@@ -271,7 +271,6 @@ if($nomor_surat_domisili>0){
 $nomor_surat=$nomor_surat+1;
 $_SESSION["SD_nomor"]=$nomor_surat;
 $_SESSION["SD_nik"]=@$data_tambah["nik"];
-$_SESSION["SD_nomor_kk"]=@$data_tambah["nomor_kk"];
 $_SESSION["SD_nama"]=@$data_tambah["nama"];
 $_SESSION["SD_jenis_kelamin"]=@$data_tambah["jenis_kelamin"];
 $_SESSION["SD_tempat_lahir"]=@$data_tambah["tempat_lahir"];
@@ -296,7 +295,7 @@ if(@$_SESSION["SD_pekerjaan"]==""){
 				<td width="1">:</td>
 				<td width="auto"><input type="text" name="nomor" id="nomor" maxlength="20" value="<?php echo @$_SESSION["SD_nomor"]; ?>" readonly="readonly" required style="width:150px"/></td>
 				</tr>
-		<tr>
+			<tr>
 				<td width="190">NIK</td>
 				<td width="1">:</td>
 				<td width="auto">
@@ -318,8 +317,9 @@ if(@$_SESSION["SD_pekerjaan"]==""){
 							}else{
 								$sel='';
 							}
-							echo '<option name="nik" value="'. $row['nik'] .'" '. $sel .' >'. $row['nik']. " - " . $row['nama'] .'</option>';
-							$jsArray .= "prdName['".$row['nik']."'] = {nomor_kk:'".addslashes($row['nomor_kk'])."',nama:'".addslashes($row['nama'])."',jenis_kelamin:'".addslashes($row['jenis_kelamin'])."',tempat_lahir:'".addslashes($row['tempat_lahir'])."',tanggal_lahir:'".addslashes(substr($row['tanggal_lahir'],8,2)."/".substr($row['tanggal_lahir'],5,2)."/".substr($row['tanggal_lahir'],0,4))."',kewarganegaraan:'".addslashes($row['kewarganegaraan'])."',agama:'".addslashes($row['agama'])."',alamat:'".addslashes($row['alamat'])."',pekerjaan:'".addslashes($row['pekerjaan'])."'};\n";
+							echo '<option name="nik" value="'. $row['nik'] .'" '. $sel .' >'. $row['nik'] .'</option>';
+							
+							$jsArray .= "prdName['".$row['nik']."'] = {nama:'".addslashes($row['nama'])."',jenis_kelamin:'".addslashes($row['jenis_kelamin'])."',tempat_lahir:'".addslashes($row['tempat_lahir'])."',tanggal_lahir:'".addslashes(substr($row['tanggal_lahir'],8,2)."/".substr($row['tanggal_lahir'],5,2)."/".substr($row['tanggal_lahir'],0,4))."',kewarganegaraan:'".addslashes($row['kewarganegaraan'])."',agama:'".addslashes($row['agama'])."',alamat:'".addslashes($row['alamat'])."'};\n";
 						} ?>
 					</select>
 
@@ -327,8 +327,6 @@ if(@$_SESSION["SD_pekerjaan"]==""){
 					<script type="text/javascript">
 					<?php echo $jsArray; ?>
 					function changeValue(id){
-					
-						document.getElementById('nomor_kk').value=prdName[id].nomor_kk;
 						document.getElementById('nama').value=prdName[id].nama;
 						document.getElementById('jenis_kelamin').value=prdName[id].jenis_kelamin;
 						document.getElementById('tempat_lahir').value=prdName[id].tempat_lahir;
@@ -336,15 +334,9 @@ if(@$_SESSION["SD_pekerjaan"]==""){
 						document.getElementById('kewarganegaraan').value=prdName[id].kewarganegaraan;
 						document.getElementById('agama').value=prdName[id].agama;
 						document.getElementById('alamat').value=prdName[id].alamat;
-						document.getElementById('pekerjaan').value=prdName[id].pekerjaan;
 					};
 					</script>						
 				</td>
-			</tr>
-			<tr>
-				<td valign="top">Nomor KK</td>
-				<td valign="top">:</td>
-				<td><input type="text" name="nama" id="nomor_kk" maxlength="30" value="<?php echo @$_SESSION["SD_nomor_kk"]; ?>" readonly="readonly" required style="width:150px"/></td>
 			</tr>
 			<tr>
 				<td valign="top">Nama</td>
@@ -401,45 +393,6 @@ if(@$_SESSION["SD_pekerjaan"]==""){
 				<td valign="top"><label for="gambar"></label>
 					<input type="file" name="gambar_kk" id="gambar_kk" accept="image/*" required/><br>
 										  <small class="text-danger font-weight-bold">KK harus berformat image(jpg/png)</small><br/>
-				</td>
-			</tr>
-			<tr>
-				<td colspan="3" valign="top"><h3>Anggota Keluarga</h3>
-					<?php
-					$query = mysqli_query($db, "select * from tb_penduduk where nomor_kk='" . $_SESSION["SD_nomor_kk"] . "' order by hubungan_keluarga desc");
-					?>
-					<table width="59%" border="0" align="left" cellpadding="0" cellspacing="0" style="border: solid 2px #6c6969">
-						<tr>
-							<td width="" bgcolor="#6c6969" background="img/blk.jpg" align="center">
-								<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="white">
-									<tr>
-										<th width="100" <?php echo $btsklm; ?>>NIK</th>
-										<th width="100" <?php echo $btsklm; ?>>Nama</th>
-									
-										<th width="80" <?php echo $btsklm; ?>>Hubungan Keluarga</th>
-									</tr>
-									<?php while ($data = mysqli_fetch_array($query)) {
-									?>
-										<tr>
-											<td height="1" bgcolor="#6c6969" colspan="10"></td>
-										</tr>
-										<tr>
-											<td align="center">
-												<?php if (@$_GET["nik"] == $data['nik']) {
-													echo "<font color='red'>" . $data['nik'] . "</font>";
-												} else {
-													echo $data['nik'];
-												} ?>
-											</td>
-											<td align="center" <?php echo $btsklm; ?>><?php echo $data['nama']; ?></td>
-										
-											<td align="center" <?php echo $btsklm; ?>><?php echo $data['hubungan_keluarga']; ?></td>
-										</tr>
-									<?php } ?>
-								</table>
-							</td>
-						</tr>
-					</table>			
 				</td>
 			</tr>
 			<tr>
