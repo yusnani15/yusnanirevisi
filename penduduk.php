@@ -689,6 +689,20 @@ if ($urut > 9) {
 		</table>
 	</form>
 
+	<!-- # Menampilkan Data Keluarga berdasarkan NIK -->
+	<h2 style="text-align: center">Daftar Anggota Keluarga</h2>
+	<table border="1" align="center" cellpadding="3" cellspacing="0" style="margin-bottom: 1rem">
+		<thead>
+			<tr>
+				<td>NIK</td>
+				<td>Nama</td>
+			</tr>
+		</thead>
+		<tbody id="table_data_by_nik">
+		</tbody>
+
+	</table>
+
 <?php
 } elseif (@$_GET["nomor_kk"] != "") {
 ?>
@@ -704,7 +718,7 @@ if ($urut > 9) {
 	<br>
 
 	<?php
-	$query = mysqli_query($db, "select * from tb_penduduk where nomor_kk='" . $_GET["nomor_kk"] . "' order by hubungan_keluarga desc");
+	$query = mysqli_query($db, "select * from tb_penduduk where nomor_kk='" . $_GET["nomor_kk"] . "' order by nik asc");
 	if (mysqli_num_rows($query) > 0) {
 	?>
 		<table width="99%" border="0" align="center" cellpadding="0" cellspacing="0" style="border: solid 2px #6c6969">
@@ -760,7 +774,7 @@ if ($urut > 9) {
 			</td>
 			<td>
 				<form method="post" action="" class="form-cari">
-					<input name="keyword_cari" type="text" placeholder="Masukan NIK / Nomor KK / Nama " style="background-color:#FFFFFF; border:2px solid #000000;border-radius:10px;width:97%" />
+					<input name="keyword_cari" type="text" placeholder="Masukan NIK/Nama/NomorHP" style="background-color:#FFFFFF; border:2px solid #000000;border-radius:10px;width:97%" />
 					<button style="margin-left:8px" name="btn_cari">Cari</button>
 				</form>
 				</td=>
@@ -775,7 +789,7 @@ if ($urut > 9) {
 	/* Fitur Cari Data Penduduk */
 	if (isset($_POST['keyword_cari'])) {
 		$KEY = $_POST['keyword_cari'];
-		$query = mysqli_query($db, "SELECT * FROM tb_penduduk WHERE nik LIKE '%$KEY%' OR nama LIKE '%$KEY%' OR nomor_kk LIKE '%$KEY%'");
+		$query = mysqli_query($db, "SELECT * FROM tb_penduduk WHERE nik LIKE '%$KEY%' OR nama LIKE '%$KEY%' OR telepon LIKE '%$KEY%'");
 	}
 
 	if (mysqli_num_rows($query) > 0) {

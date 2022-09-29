@@ -294,7 +294,6 @@ if(@$_SESSION["yusnani_status"]=="Penduduk"){
 	$data_tambah=mysqli_fetch_array($query_tambah);
 }
 	$_SESSION["SD_nama"]=@$data_tambah["nama"];
-	$_SESSION["SD_nomor_kk"]=@$data_tambah["nomor_kk"];
 	$_SESSION["SD_tempat_lahir"]=@$data_tambah["tempat_lahir"];
 	$_SESSION["SD_tanggal_lahir"]=substr(@$data_tambah["tanggal_lahir"],8,2)."/".substr(@$data_tambah["tanggal_lahir"],5,2)."/".substr(@$data_tambah["tanggal_lahir"],0,4);
 	$_SESSION["SD_jenis_kelamin"]=@$data_tambah["jenis_kelamin"];
@@ -393,8 +392,6 @@ $_SESSION["SD_nomor"]=$nomor_surat;
 					<script type="text/javascript">
 					<?php echo $jsArray; ?>
 					function changeValue(id){
-						$_SESSION["SD_nomor_kk"]=prdName[id].nomor_kk;
-						document.getElementById('nomor_kk').value=prdName[id].nomor_kk;
 						document.getElementById('nama').value=prdName[id].nama;
 						document.getElementById('jenis_kelamin').value=prdName[id].jenis_kelamin;
 						document.getElementById('tempat_lahir').value=prdName[id].tempat_lahir;
@@ -408,11 +405,6 @@ $_SESSION["SD_nomor"]=$nomor_surat;
 				</td>
 			</tr>
 			</form>
-			<tr>
-				<td valign="top">Nomor KK</td>
-				<td valign="top">:</td>
-				<td><input type="text" name="nama" id="nomor_kk" maxlength="30" value="<?php echo @$_SESSION["SD_nomor_kk"]; ?>" readonly="readonly" required style="width:150px"/></td>
-			</tr>
 			<tr>
 				<td valign="top">Nama</td>
 				<td valign="top">:</td>
@@ -469,45 +461,6 @@ $_SESSION["SD_nomor"]=$nomor_surat;
 				<td valign="top"><label for="gambar"></label>
 					<input type="file" name="gambar_kk" id="gambar_kk" accept="image/*" required/><br>
 										  <small class="text-danger font-weight-bold">KK harus berformat image(jpg/png)</small><br/>
-				</td>
-			</tr>
-			<tr>
-				<td colspan="3" valign="top"><h3>Anggota Keluarga</h3>
-					<?php
-					$query = mysqli_query($db, "select * from tb_penduduk where nomor_kk='" . $_SESSION["SD_nomor_kk"] . "' order by hubungan_keluarga desc");
-					?>
-					<table width="94%" border="0" align="left" cellpadding="0" cellspacing="0" style="border: solid 2px #6c6969">
-						<tr>
-							<td width="" bgcolor="#6c6969" background="img/blk.jpg" align="center">
-								<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="white">
-									<tr>
-										<th width="100" <?php echo $btsklm; ?>>NIK</th>
-										<th width="100" <?php echo $btsklm; ?>>Nama</th>
-										
-										<th width="80" <?php echo $btsklm; ?>>Hubungan Keluarga</th>
-									</tr>
-									<?php while ($data = mysqli_fetch_array($query)) {
-									?>
-										<tr>
-											<td height="1" bgcolor="#6c6969" colspan="10"></td>
-										</tr>
-										<tr>
-											<td align="center">
-												<?php if (@$_GET["nik"] == $data['nik']) {
-													echo "<font color='red'>" . $data['nik'] . "</font>";
-												} else {
-													echo $data['nik'];
-												} ?>
-											</td>
-											<td align="center" <?php echo $btsklm; ?>><?php echo $data['nama']; ?></td>
-											
-											<td align="center" <?php echo $btsklm; ?>><?php echo $data['hubungan_keluarga']; ?></td>
-										</tr>
-									<?php } ?>
-								</table>
-							</td>
-						</tr>
-					</table>			
 				</td>
 			</tr>
 			<tr>
